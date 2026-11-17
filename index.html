@@ -3,33 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔗 ShortLink & 📥 File Downloader</title>
+    <title>📚 Perpustakaan Kitab Pesantren</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🛠️ My Tools</h1>
+        <header>
+            <h1>📚 Perpustakaan Kitab Pesantren</h1>
+            <p class="subtitle">Kumpulan Kitab & Terjemahan Lengkap — Kajian Pesantren Nusantara</p>
+        </header>
 
-        <div class="card">
-            <h2>🔗 Short Link</h2>
-            <input type="text" id="urlInput" placeholder="Masukkan link panjang...">
-            <button onclick="shortenLink()">Buat Pendek</button>
-            <div id="shortResult" class="result"></div>
+        <!-- Halaman Daftar Kitab -->
+        <div id="halamanDaftar">
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="bukaKategori('semua')">📖 Semua</button>
+                <button class="tab-btn" onclick="bukaKategori('fiqih')">⚖️ Fiqih</button>
+                <button class="tab-btn" onclick="bukaKategori('ushul')">🔍 Ushul Fiqih</button>
+                <button class="tab-btn" onclick="bukaKategori('alat')">✏️ Ilmu Alat</button>
+                <button class="tab-btn" onclick="bukaKategori('tasawuf')">💚 Tasawuf & Akhlak</button>
+                <button class="tab-btn" onclick="bukaKategori('aqidah')">☝️ Aqidah</button>
+                <button class="tab-btn" onclick="bukaKategori('hadits')">📜 Hadits</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="cariKitab" placeholder="Cari nama kitab..." oninput="cariKitab()">
+            </div>
+
+            <div id="daftarKitab" class="kitab-grid"></div>
         </div>
 
-        <div class="card">
-            <h2>📥 File Downloader</h2>
-            <p class="info">Upload file ke GoFile.io → salin link → tempel di bawah</p>
-            <input type="text" id="fileLink" placeholder="Tempel link file disini...">
-            <input type="text" id="fileName" placeholder="Nama file (contoh: video.mp4)">
-            <button onclick="addDownload()">➕ Tambah ke Daftar</button>
-            
-            <h3>📂 Daftar File:</h3>
-            <div id="fileList">
-                <p class="empty">Belum ada file</p>
+        <!-- Halaman Isi Kitab -->
+        <div id="halamanIsi" style="display:none;">
+            <button class="kembali-btn" onclick="kembaliKeDaftar()">← Kembali ke Daftar Kitab</button>
+            <div class="judul-kitab">
+                <h2 id="namaKitab"></h2>
+                <p id="pengarangKitab" class="pengarang"></p>
+            </div>
+
+            <!-- Daftar Bab -->
+            <div class="bab-daftar">
+                <h3>📂 Daftar Bab</h3>
+                <div id="daftarBabIsi"></div>
+            </div>
+
+            <!-- Tempat Baca -->
+            <div id="tempatBaca" class="tempat-baca" style="display:none;">
+                <div class="nav-bab">
+                    <button class="nav-btn" id="btnSebelumnya" onclick="babSebelumnya()">← Sebelumnya</button>
+                    <h4 id="judulBab"></h4>
+                    <button class="nav-btn" id="btnSelanjutnya" onclick="babSelanjutnya()">Selanjutnya →</button>
+                </div>
+                <div class="isi-kitab">
+                    <div class="teks-arab">
+                        <h4>📜 Teks Kitab</h4>
+                        <div id="teksArab"></div>
+                    </div>
+                    <div class="teks-terjemahan">
+                        <h4>📝 Terjemahan</h4>
+                        <div id="teksTerjemahan"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
