@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔗 ShortLink & 📥 File Downloader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ My Tools</h1>
+
+        <div class="card">
+            <h2>🔗 Short Link</h2>
+            <input type="text" id="urlInput" placeholder="Masukkan link panjang...">
+            <button onclick="shortenLink()">Buat Pendek</button>
+            <div id="shortResult" class="result"></div>
+        </div>
+
+        <div class="card">
+            <h2>📥 File Downloader</h2>
+            <p class="info">Upload file ke GoFile.io → salin link → tempel di bawah</p>
+            <input type="text" id="fileLink" placeholder="Tempel link file disini...">
+            <input type="text" id="fileName" placeholder="Nama file (contoh: video.mp4)">
+            <button onclick="addDownload()">➕ Tambah ke Daftar</button>
+            
+            <h3>📂 Daftar File:</h3>
+            <div id="fileList">
+                <p class="empty">Belum ada file</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
